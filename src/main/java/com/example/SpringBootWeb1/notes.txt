@@ -1,3 +1,5 @@
+
+
 * S1: Create a jsp. Jsp files are stored inside src/webapp/index.jsp
   S2: In order to access jsp file, we need controller so create a controller class in src/main/java/package/HomeController.java. We also need to annotate it
   	  with @Controller, so that springboot gets to know this is controller class 
@@ -44,6 +46,10 @@
 	- If the parameter is an array (int[], String[]), Spring binds all values.	
 
 *	ViewResolver is used to separate the Controller from the View, which aligns with the MVC (Model-View-Controller) architecture that Spring follows.
+
+*	Good practice is keeping all the static files such as : css, images in static folder under resources or inside webapp.
+
+*	Model object is good to have only till you are using model object, if view is also there better to go with ModelView object.
 
 
 
