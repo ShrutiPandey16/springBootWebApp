@@ -28,10 +28,10 @@
 
 				<form action="addAlien">
 					<label for="aid">Enter your ID</label>
-					<input type="number" name="aid" id="aid">
+					<input type="text" name="aid" id="aid">
 
 					<label for="aname">Enter your name</label>
-					<input type="text" name="num2" id="num2">
+					<input type="text" name="aname" id="num2">
 
 					<input type="submit" value="Add Student">
 				</form>

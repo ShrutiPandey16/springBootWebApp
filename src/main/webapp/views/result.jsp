@@ -13,8 +13,11 @@
         <body>
             <!-- <h2>Sum is <%= session.getAttribute("sum") %></h2> -->
             <!-- <h2>Sum is ${sum}</h2> JSTL (JavaServer Pages Standard Tag Library) way -->
-            <h2>Welcome to Hilton</h2>
-            <p>${student}</p>
+            <div class="container">
+                <h3>${alien}</h3>
+                <h2>Welcome to the ${course} world!</h2>
+            </div>
+
         </body>
 
     </html>

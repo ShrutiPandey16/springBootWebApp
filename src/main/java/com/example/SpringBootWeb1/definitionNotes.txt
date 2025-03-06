@@ -49,7 +49,11 @@
 	- Final Thoughts
 		JSP is older and requires additional setup, while Thymeleaf is modern and works seamlessly with Spring Boot.
 		If you're building a new Spring Boot app, Thymeleaf is the preferred choice.
-		JSP is still useful for legacy applications or if you are migrating from an older Java EE stack.	  
+		JSP is still useful for legacy applications or if you are migrating from an older Java EE stack.	
+		
+*	@ModelAttribute annotation in Spring MVC is used to bind form data to a Java object and automatically add it to the model, making it available for the view.
+	It is not mandate to add it before the variable name, how if u want different name of the variable from the form input variable, this is used.
+	This can also be used with a method.		  
 			
 	
 
