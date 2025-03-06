@@ -1,0 +1,64 @@
+*	JSP files are compiled into Servlets only once (first request) and then executed as compiled Java code. This is faster than interpreting JSP on every request.
+
+*	✅ JSP is just a convenience for developers. The actual execution happens via Servlets.
+	✅ By default, JSP files are compiled into Servlets by Tomcat/web container.
+	✅ Servlets offer better performance, maintainability, and control over HTTP requests.
+	
+*	In Spring Boot, when handling form data or request parameters, Spring automatically binds the request parameters to method arguments using the names of the parameters.
+
+*	In Spring MVC, the ViewResolver is responsible for mapping logical view names (returned by controllers) to actual view templates (like JSP, Thymeleaf, or HTML files).
+	
+	How It Works?
+	The controller method returns a logical view name (e.g., "home").
+	The ViewResolver takes this logical name and maps it to an actual view file (e.g., /WEB-INF/views/home.jsp).
+	The resolved view is rendered and returned to the user.	
+	
+	Why Use ViewResolver?
+	✅ Separation of Concerns – The controller only returns a view name, not a full file path.
+	✅ Flexible View Mapping – Change view technologies easily (JSP, Thymeleaf, etc.).
+	✅ Avoid Hardcoding Paths – Uses prefixes and suffixes to simplify view resolution.
+	
+*	How ViewResolver Helps in MVC?
+	In Spring MVC:
+	Model (M) → Contains business logic & data (e.g., a Java object or database result).
+	View (V) → Responsible for UI rendering (e.g., JSP, Thymeleaf).
+	Controller (C) → Handles requests, processes data, and returns a view name (not a view file directly).
+	
+	- If there were no ViewResolver, you would have to manually specify the full path to JSP files, like:
+			@RequestMapping("/home")
+			public String home() {
+			    return "/WEB-INF/views/home.jsp"; // Hardcoded path (not ideal)
+			}
+	  This is not flexible as changing the view tech from jsp to thymeleaf will require changes in each controller.
+	
+	- Using ViewResolver, the controller only returns a logical view name, and Spring automatically maps it to the correct file.
+			@RequestMapping("/home")
+			public String home() {
+			    return "home"; // Logical view name
+			}
+	  No hard coding of file paths in the controller → Better Separation of Concerns.	
+	  
+*	Key Differences Between JSP and Thymeleaf
+	Feature							JSP												Thymeleaf
+	View Resolver					InternalResourceViewResolver (manual setup)		Auto-configured in Spring Boot
+	File Location					/WEB-INF/views/									/src/main/resources/templates/
+	Syntax							${message}										th:text="${message}"
+	Requires Servlet Container		Yes (like Tomcat)								No (works directly with Spring Boot)
+	Recommended for Modern Apps		❌ No											✅ Yes
+
+	- Final Thoughts
+		JSP is older and requires additional setup, while Thymeleaf is modern and works seamlessly with Spring Boot.
+		If you're building a new Spring Boot app, Thymeleaf is the preferred choice.
+		JSP is still useful for legacy applications or if you are migrating from an older Java EE stack.	  
+			
+	
+
+
+
+
+
+
+
+
+
+	

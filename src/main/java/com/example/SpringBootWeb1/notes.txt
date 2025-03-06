@@ -1,0 +1,61 @@
+* S1: Create a jsp. Jsp files are stored inside src/webapp/index.jsp
+  S2: In order to access jsp file, we need controller so create a controller class in src/main/java/package/HomeController.java. We also need to annotate it
+  	  with @Controller, so that springboot gets to know this is controller class 
+  S3: 
+  
+  
+*  .jsp file internally gets converted to servlet. jsp is easier to write but servlet handles execution. This conversion allows java code inside jsp file 
+	to be executed as java class.
+	
+*	to convert jsp file into servlet, "Tomcat Jasper" dependency is required.
+
+*	in this study session, we are trying to create a simple calculator webpage where the user can input two numbers and receive their sum as output.
+	HomeController.java:
+	We have a home method mapped to /, which returns "index.jsp". This serves as the landing page.
+	We also have an add method mapped to "add", which processes the user's input and calculates the sum.
+	
+	index.jsp:
+	This page contains a form with an action pointing to "add".
+	When the user enters two numbers and submits the form, the request is sent to /add.
+	
+	Spring MVC Processing:
+	Spring searches for a method mapped to "add" and invokes the add() method in HomeController.
+	Inside the add() method:
+	The HttpServletRequest object retrieves the input values from the form using getParameter("num1") and getParameter("num2").
+	The values are parsed into integers and added.
+	The result is stored in an HttpSession attribute using session.setAttribute("sum", sum).
+	The method then returns "result.jsp", redirecting the user to the results page.
+	
+	result.jsp:
+	This page retrieves the sum using session.getAttribute("sum") and displays the result to the user.
+	
+	
+*	By default, jsp has session, request etc objects in built. We don't need to create it explicitly.
+
+*	we can remove HttpServletRequest object from the add method, and replace it with the variable name used in inputs, spring automatically maps to the 
+	matching variable name. However, if the user wants diff var name than the input vn, "@RequestParam("num1") num" is used.
+	The name="num1" and name="num2" in the <input> fields define the parameter names that will be sent in the request.
+	Spring matches the request parameters (num1 and num2) with the method parameters by name.
+	It automatically converts the string values from the request into int (or other appropriate types) if possible.
+
+*	If you have multiple input fields with the same name in your form:
+	- No ambiguity error occurs.
+	- If the parameter is a single value (int, String), Spring picks the last occurrence.
+	- If the parameter is an array (int[], String[]), Spring binds all values.	
+
+*	ViewResolver is used to separate the Controller from the View, which aligns with the MVC (Model-View-Controller) architecture that Spring follows.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
